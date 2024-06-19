@@ -2,6 +2,7 @@
 
 # Definir el color cyan
 CYAN='\033[0;36m'
+GREEN='\033[0;32m'
 NC='\033[0m' # Sin color (reset)
 
 # Actualizar
@@ -39,5 +40,5 @@ sudo apt install net-tools dphys-swapfile -y
 echo "${CYAN}--> Recuerda que el próximo inicio de sesión por SSH será a través del puerto 8891${NC}"
 echo "Presiona Enter para instalar 3CX PBX..."
 
-# Mostrar el comando final
-echo "sudo apt install 3cxpbx -y"
+# Mensaje con colores
+echo -e "${CYAN}Introduce el comando ${GREEN}sudo apt install 3cxpbx -y${NC} ${CYAN}para terminar la instalación de 3CX${NC}"
