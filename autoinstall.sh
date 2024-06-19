@@ -4,31 +4,6 @@
 CYAN='\033[0;36m'
 NC='\033[0m' # Sin color (reset)
 
-# Función para interactuar con el instalador de 3CX y aceptar el EULA
-interact_with_3cx_installer() {
-    expect << EOF
-        spawn sudo apt install 3cxpbx -y
-        expect "Do you accept the 3CX EULA? (yes/no) "
-        send "yes\r"
-        expect "Press \\[Tab\\] to move to OK and \\[Enter\\] to continue: "
-        send "\t\r"
-        expect eof
-EOF
-}
-
-# Verificar si estamos ejecutando bajo sh/dash y si es así, ejecutar bash explícitamente
-if [ "$(ps -p $$ | grep -i "sh" | wc -l)" -gt 0 ]; then
-    echo "Este script requiere Bash para ejecutarse correctamente. Ejecutando bajo Bash..."
-    exec bash "$0" "$@"
-fi
-
-# Verificar si expect está instalado, si no, instalarlo
-if ! command -v expect &> /dev/null; then
-    echo -e "${CYAN}Instalando expect...${NC}"
-    sudo apt-get update
-    sudo apt-get install -y expect
-fi
-
 # Actualizar
 echo -e "${CYAN}--> Actualización del sistema${NC}"
 sudo apt-get update
@@ -60,10 +35,9 @@ sudo apt update
 echo -e "${CYAN}--> Instalando Dependencias adicionales...${NC}"
 sudo apt install net-tools dphys-swapfile -y
 
-# Instalación 3CX
-echo -e "${CYAN}--> Instalando 3CX...${NC}"
-interact_with_3cx_installer
-
 # Finalización
-echo -e "${CYAN}--> Instalación completada.${NC}"
 echo -e "${CYAN}--> Recuerda que el próximo inicio de sesión por SSH será a través del puerto 8891${NC}"
+echo "Presiona Enter para instalar 3CX PBX..."
+
+# Ejecutar comando final
+sudo apt install 3cxpbx -y
