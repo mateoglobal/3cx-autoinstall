@@ -37,7 +37,6 @@ sudo apt install net-tools dphys-swapfile -y
 
 # Finalización
 echo -e "${CYAN}--> Recuerda que el próximo inicio de sesión por SSH será a través del puerto 8891${NC}"
-echo "Presiona Enter para instalar 3CX PBX..."
 
-# Ejecutar comando final
-sudo apt install 3cxpbx -y
+# Mostrar el comando final
+echo "sudo apt install 3cxpbx -y"
