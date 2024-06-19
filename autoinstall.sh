@@ -5,7 +5,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # Sin color (reset)
 
 # Función para interactuar con el instalador de 3CX y aceptar el EULA
-function interact_with_3cx_installer {
+interact_with_3cx_installer() {
     expect << EOF
         spawn sudo apt install 3cxpbx -y
         expect "Do you accept the 3CX EULA? (yes/no) "
@@ -15,6 +15,19 @@ function interact_with_3cx_installer {
         expect eof
 EOF
 }
+
+# Verificar si estamos ejecutando bajo sh/dash y si es así, ejecutar bash explícitamente
+if [ "$(ps -p $$ | grep -i "sh" | wc -l)" -gt 0 ]; then
+    echo "Este script requiere Bash para ejecutarse correctamente. Ejecutando bajo Bash..."
+    exec bash "$0" "$@"
+fi
+
+# Verificar si expect está instalado, si no, instalarlo
+if ! command -v expect &> /dev/null; then
+    echo -e "${CYAN}Instalando expect...${NC}"
+    sudo apt-get update
+    sudo apt-get install -y expect
+fi
 
 # Actualizar
 echo -e "${CYAN}--> Actualización del sistema${NC}"
