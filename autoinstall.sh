@@ -44,9 +44,9 @@ echo -e "${CYAN}--> Instalando Dependencias adicionales...${NC}"
 sleep 4
 sudo apt install net-tools dphys-swapfile -y
 
-# Finalización
+# Aviso ssh
 echo -e "${CYAN}--> Recuerda que el próximo inicio de sesión por SSH será a través del puerto 8891${NC}"
 sleep 1
 
-# Mensaje con colores
+# Mensaje con colorines
 echo -e "${CYAN}Introduce el comando ${GREEN}sudo apt install 3cxpbx -y${NC} ${CYAN}para terminar la instalación de 3CX${NC}"
