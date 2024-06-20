@@ -25,6 +25,9 @@ sed -i 's/#MaxSessions 10/MaxSessions 3/g' /etc/ssh/sshd_config
 sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords no/g' /etc/ssh/sshd_config
 
+# Reinicio sshd
+sudo systemctl restart sshd
+
 # iptables
 echo -e "${CYAN}--> Configuración de iptables y sshd${NC}"
 sleep 2
