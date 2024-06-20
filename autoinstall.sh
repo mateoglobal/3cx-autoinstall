@@ -59,4 +59,4 @@ echo -e "${CYAN}--> Recuerda que el próximo inicio de sesión por SSH será a t
 sleep 1
 
 # Aviso de instalación con colorines :)
-echo -e "${CYAN}Introduce el comando ${GREEN}sudo apt install 3cxpbx -y${NC} ${CYAN}para terminar la instalación de 3CX${NC}"
+echo -e "${CYAN}✓ Introduce el comando ${GREEN}sudo apt install 3cxpbx -y${NC} ${CYAN}para terminar la instalación de 3CX${NC}"
