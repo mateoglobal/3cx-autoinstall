@@ -6,39 +6,49 @@ GREEN='\033[0;32m'
 NC='\033[0m' # Sin color (reset)
 
 # Actualizar
-echo "${CYAN}--> Actualización del sistema${NC}"
+sleep 4
+echo -e "${CYAN}--> Actualización del sistema${NC}"
 sudo apt-get update
 sudo apt-get upgrade -y
 
 # Modificar sshd
-echo "${CYAN}--> Configuración de sshd${NC}"
+sleep 4
+echo -e "${CYAN}--> Configuración de sshd${NC}"
 # Aquí va tu configuración de sshd original
 
 # iptables
-echo "${CYAN}--> Configuración de iptables y sshd${NC}"
+sleep 4
+echo -e "${CYAN}--> Configuración de iptables y sshd${NC}"
 # Aquí va tu configuración de iptables original
 
 # Dependencias 3CX
-echo "${CYAN}--> Instalación de dependencias${NC}"
+sleep 4
+echo -e "${CYAN}--> Instalación de dependencias${NC}"
 sudo apt install -y gnupg2 wget
 
 # Clave GPG y repositorio 3CX
-echo "${CYAN}--> Añadiendo la clave GPG del repositorio de 3cx${NC}"
+sleep 4
+echo -e "${CYAN}--> Añadiendo la clave GPG del repositorio de 3cx${NC}"
 wget -O- http://downloads-global.3cx.com/downloads/3cxpbx/public.key | sudo apt-key add -
 
-echo "${CYAN}--> Añadiendo el repositorio de 3CX...${NC}"
+sleep 4
+echo -e "${CYAN}--> Añadiendo el repositorio de 3CX...${NC}"
 sleep 1 && echo "deb http://downloads-global.3cx.com/downloads/debian buster main" | sudo tee /etc/apt/sources.list.d/3cxpbx.list
 
-echo "${CYAN}--> Actualizando los repositorios...${NC}"
+sleep 4
+echo -e "${CYAN}--> Actualizando los repositorios...${NC}"
 sudo apt update
 
 # Dependencias adicionales
-echo "${CYAN}--> Instalando Dependencias adicionales...${NC}"
+sleep 4
+echo -e "${CYAN}--> Instalando Dependencias adicionales...${NC}"
 sudo apt install net-tools dphys-swapfile -y
 
 # Finalización
-echo "${CYAN}--> Recuerda que el próximo inicio de sesión por SSH será a través del puerto 8891${NC}"
+sleep 4
+echo -e "${CYAN}--> Recuerda que el próximo inicio de sesión por SSH será a través del puerto 8891${NC}"
 echo "Presiona Enter para instalar 3CX PBX..."
 
 # Mensaje con colores
+sleep 4
 echo -e "${CYAN}Introduce el comando ${GREEN}sudo apt install 3cxpbx -y${NC} ${CYAN}para terminar la instalación de 3CX${NC}"
